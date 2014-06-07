@@ -96,7 +96,7 @@ function parse_git_branch() {
 # (http://en.wikipedia.org/wiki/Unicode_symbols)
 symbol="☯ "
 
-export PS1="\[${BOLD}${MAGENTA}\]\u \[$RESET\]in \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\]\n$symbol"
+export PS1="\[${BOLD}${MAGENTA}\]\u \[$RESET\](\j) in \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\]\n$symbol"
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 
@@ -105,11 +105,7 @@ export PS2="\[$ORANGE\]→ \[$RESET\]"
 # Only show the current directory's name in the tab 
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
-# init z! (https://github.com/rupa/z)
-. ~/z.sh
-
 # rbenv stuff
-
 function activate_rbenv {
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
@@ -124,3 +120,8 @@ alias la="ls -la"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
+
+alias nw='/Users/damientoma/Work/node-webkit/node-webkit.app/Contents/MacOS/node-webkit'
+shopt -s extglob # Enable extglob for the excluding selector
+alias nwify='zip -r ./${PWD##*/}.nw !(*.nw)'
+alias clean='rm -rf *~'
