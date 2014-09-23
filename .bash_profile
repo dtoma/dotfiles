@@ -1,5 +1,7 @@
 ### Aliases
 
+clear
+
 # Open specified files in Sublime Text
 # "s ." will open the current directory in Sublime
 alias s='open -a "Sublime Text"'
@@ -9,7 +11,6 @@ colorflag="-G"
 alias ls="command ls ${colorflag}"
 alias l="ls -lF ${colorflag}" # all files, in long format
 alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
-alias lsd='ls -lF ${colorflag} | grep "^d"' # only directories
 
 # Quicker navigation
 alias ..="cd .."
@@ -17,27 +18,8 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-# Shortcuts to my Code folder in my home directory
-alias code="cd ~/Code"
-alias sites="cd ~/Code/sites"
-
-# Enable aliases to be sudo’ed
-alias sudo='sudo '
-
-# Colored up cat!
-# You must install Pygments first - "sudo easy_install Pygments"
-alias c='pygmentize -O style=monokai -f console256 -g'
-
-# Git 
-# You must install Git first - ""
-alias gs='git status'
-alias ga='git add .'
-alias gc='git commit -m' # requires you to type a commit message
-alias gp='git push'
-
-
-### Prompt Colors 
-# Modified version of @gf3’s Sexy Bash Prompt 
+### Prompt Colors
+# Modified version of @gf3’s Sexy Bash Prompt
 # (https://github.com/gf3/dotfiles)
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
 	export TERM=gnome-256color
@@ -92,7 +74,7 @@ function parse_git_branch() {
 	git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
-# Change this symbol to something sweet. 
+# Change this symbol to something sweet.
 # (http://en.wikipedia.org/wiki/Unicode_symbols)
 symbol="☯ "
 
@@ -102,7 +84,7 @@ export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 ### Misc
 
-# Only show the current directory's name in the tab 
+# Only show the current directory's name in the tab
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
 # rbenv stuff
@@ -113,15 +95,26 @@ function activate_rbenv {
 
 alias activate-rbenv="activate_rbenv"
 
-# own aliases
-alias ll="ls -l"
-alias la="ls -la"
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-
-alias nw='/Users/damientoma/Work/node-webkit/node-webkit.app/Contents/MacOS/node-webkit'
-shopt -s extglob # Enable extglob for the excluding selector
-alias nwify='zip -r ./${PWD##*/}.nw !(*.nw)'
 alias clean='rm -rf *~'
+
+# https://gist.github.com/JeffreyWay/1525217#comment-71652
+server() {
+  open "http://localhost:${1}" && python -m SimpleHTTPServer $1
+}
+
+# Better head
+pretty_head() {
+        if [ -z "$2" ]
+        then
+                cat -n "$1" | head -n -0
+        else
+                cat -n "$1" | head -n "$2"
+        fi
+}
+alias ph=pretty_head
+
+# Calendar
+
+DATE=`date +%d`
+
+cal | sed "s/${DATE}/${BOLD}${MAGENTA}${DATE}${RESET}/"
