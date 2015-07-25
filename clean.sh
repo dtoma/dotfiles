@@ -2,9 +2,9 @@
 
 set -euo pipefail
 
-rm ~/.bashrc
-rm ~/.bash_profile
-rm ~/.gitconfig
-rm ~/.gitignore_global
-rm ~/.vimrc
-rm -r ~/.vim/
+rm "$HOME"/.bashrc
+rm "$HOME"/.bash_profile
+rm "$HOME"/.gitconfig
+rm "$HOME"/.gitignore_global
+rm "$HOME"/.vimrc
+rm -r "$HOME"/.vim/
