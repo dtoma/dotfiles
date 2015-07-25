@@ -12,11 +12,6 @@ alias ls="command ls ${colorflag}"
 alias l="ls -lF ${colorflag}" # all files, in long format
 alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
 
-# Quicker navigation
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
 
 ### Prompt Colors
 # Modified version of @gf3’s Sexy Bash Prompt
@@ -87,34 +82,4 @@ export PS2="\[$ORANGE\]→ \[$RESET\]"
 # Only show the current directory's name in the tab
 export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
 
-# rbenv stuff
-function activate_rbenv {
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
-}
-
-alias activate-rbenv="activate_rbenv"
-
 alias clean='rm -rf *~'
-
-# https://gist.github.com/JeffreyWay/1525217#comment-71652
-server() {
-  open "http://localhost:${1}" && python -m SimpleHTTPServer $1
-}
-
-# Better head
-pretty_head() {
-        if [ -z "$2" ]
-        then
-                cat -n "$1" | head -n -0
-        else
-                cat -n "$1" | head -n "$2"
-        fi
-}
-alias ph=pretty_head
-
-# Calendar
-
-DATE=`date +%d`
-
-cal | sed "s/${DATE}/${BOLD}${MAGENTA}${DATE}${RESET}/"
