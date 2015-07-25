@@ -1,8 +1,6 @@
 [color]
   ui = auto
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
   whitespace = red reverse
 [user]
   name = Damien Toma
