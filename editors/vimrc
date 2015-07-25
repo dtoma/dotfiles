@@ -1,0 +1,68 @@
+" forces vim to source .vimrc file if it present in working directory,
+" providing a place to store project-specific configuration.
+set exrc
+
+" restrict usage of some commands in non-default .vimrc files
+set secure
+
+" a tab is four spaces
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
+
+" Don't behave like vi
+set nocompatible
+
+" don't wrap lines
+set nowrap
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" always set autoindenting on
+set autoindent
+
+" copy the previous indentation on autoindenting
+set copyindent
+
+" always show line numbers
+set number
+
+" use multiple of shiftwidth when indenting with '<' and '>'
+set shiftround
+
+" ignore case when searching
+set ignorecase
+
+" ignore case if search pattern is all lowercase, case-sensitive otherwise
+set smartcase
+
+" insert tabs on the start of a line according to shiftwidth, not tabstop
+set smarttab
+
+" highlight search terms
+set hlsearch
+
+" show search matches as you type
+set incsearch
+
+" highlight current line
+set cursorline
+
+" redraw only when we need to.
+set lazyredraw
+
+" highlight matching [{()}]
+set showmatch
+
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
+" Cool color scheme (remember to configure putty properly)
+syntax enable
+colorscheme twilight-term256
+
+if exists('+colorcolumn')
+  set colorcolumn=80
+endif
