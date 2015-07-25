@@ -1,0 +1,14 @@
+[color]
+  ui = auto
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  whitespace = red reverse
+[user]
+  name = Damien Toma
+  email = damientoma.pro@gmail.com
+[core]
+  excludesfile = $HOME/.gitignore_global
+  editor = /usr/bin/vim
+[push]
+  default = current
