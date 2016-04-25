@@ -1,17 +1,10 @@
 ### Aliases
 
-clear
-
-# Open specified files in Sublime Text
-# "s ." will open the current directory in Sublime
-alias s='open -a "Sublime Text"'
-
 # Color LS
 colorflag="-G"
-alias ls="command ls ${colorflag}"
+alias ls="command ls ${colorflag} -hp"
 alias l="ls -lF ${colorflag}" # all files, in long format
 alias la="ls -laF ${colorflag}" # all files inc dotfiles, in long format
-
 
 ### Prompt Colors
 # Modified version of @gf3’s Sexy Bash Prompt
@@ -73,13 +66,22 @@ function parse_git_branch() {
 # (http://en.wikipedia.org/wiki/Unicode_symbols)
 symbol="☯ "
 
-export PS1="\[${BOLD}${MAGENTA}\]\u \[$RESET\](\j) in \[$GREEN\]\w\[$RESET\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$RESET\]\n$symbol"
+export PS1="\[${BOLD}${MAGENTA}\]\u \[$RESET\](\j) \[$GREEN\]\w\[$PURPLE\] \$(parse_git_branch)\[$RESET\]\n$symbol"
 export PS2="\[$ORANGE\]→ \[$RESET\]"
 
 
+# History control
+
+export HISTCONTROL=ignoreboth:erasedups
+
 ### Misc
 
-# Only show the current directory's name in the tab
-export PROMPT_COMMAND='echo -ne "\033]0;${PWD##*/}\007"'
-
 alias clean='rm -rf *~'
+
+alias dockup='boot2docker start && $(boot2docker shellinit)'
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
+# added by Anaconda3 2.4.1 installer
+export PATH="/Users/damientoma/anaconda3/bin:$HOME/Work/build/bin:$PATH"
