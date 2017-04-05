@@ -7,6 +7,8 @@
   email = damientoma.pro@gmail.com
 [core]
   excludesfile = $HOME/.gitignore_global
-  editor = /usr/bin/vim
+  editor = nano
 [push]
   default = current
+[alias]
+  st = status -s
