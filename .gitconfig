@@ -12,3 +12,4 @@
   default = current
 [alias]
   st = status -s
+  l = log --decorate --oneline --graph
